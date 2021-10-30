@@ -23,6 +23,20 @@ public class Main {
 
     }
 
+    private static void showInfoInTable() throws SQLException {
+        List<Employee> allEmployees = sortEmployeesBySalaryLimits(employeeService.getEmployees());
+        List<Integer> years = employeeService.returnFindAllAvailableYears();
+        System.out.printf("%20s %20s %20s %20s", "enteringYear", "salaryLimits", "personalId", "full name");
+        System.out.println();
+        System.out.println("---------------------------------------------------------------------------------------------");
+        for (Integer year : years) {
+            List<Employee> employeesWithThisYear = returnEmployeesByYear(allEmployees, year);
+            printSortedEmployee(1, 5, employeesWithThisYear);
+            printSortedEmployee(5, 10, employeesWithThisYear);
+            printSortedEmployee(10, 100, employeesWithThisYear);
+        }
+    }
+
     private static void printSortedEmployee(int min, int max, List<Employee> employees) {
         for (Employee employee : employees) {
             if (employee.getSalaryLimits() > min && employee.getSalaryLimits() <= max) {
