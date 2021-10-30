@@ -5,6 +5,7 @@ import ir.maktab.service.EmployeeService;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -17,8 +18,19 @@ public class Main {
             throwable.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
 
+    }
+
+    private static List<Employee> sortEmployeesBySalaryLimits(List<Employee> employees) {
+        employees.sort(new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        return employees;
     }
 
     private static List<Employee> returnEmployeesByYear(List<Employee> employees, int year) {
@@ -29,4 +41,5 @@ public class Main {
         }
         return employeesOfYear;
     }
+
 }
