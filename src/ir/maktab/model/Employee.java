@@ -20,4 +20,13 @@ public class Employee implements Comparable<Employee> {
             return 1;
         else return -1;
     }
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "fullName='" + fullName + '\'' +
+                ", salaryLimits=" + salaryLimits +
+                ", personalId=" + personalId +
+                ", enteringYear=" + enteringYear +
+                '}';
+    }
 }
