@@ -23,6 +23,16 @@ public class Main {
 
     }
 
+    private static void printSortedEmployee(int min, int max, List<Employee> employees) {
+        for (Employee employee : employees) {
+            if (employee.getSalaryLimits() > min && employee.getSalaryLimits() <= max) {
+                System.out.format("%20s %20s %20s %20s", employee.getEnteringYear(), employee.getSalaryLimits(), employee.getPersonalId(), employee.getFullName());
+                System.out.println();
+                System.out.println("---------------------------------------------------------------------------------------------");
+            }
+        }
+    }
+
     private static List<Employee> sortEmployeesBySalaryLimits(List<Employee> employees) {
         employees.sort(new Comparator<Employee>() {
             @Override
